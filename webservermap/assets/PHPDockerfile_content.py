@@ -1,15 +1,22 @@
+from webservermap.Debian import Debian
+
 def getContent():
+    string_to_return = __part1()
+    debian = Debian()
+    string_to_return += debian.get_update_os_script()
+    string_to_return += __part2()
+    return string_to_return
+    
+def __part1():
     return '''FROM php:7.4.2-apache-buster
  
 ARG DEBIAN_FRONTEND=noninteractive
 
-# Update
-RUN apt-get -y update --fix-missing && \
-    apt-get upgrade -y && \
-    apt-get --no-install-recommends install -y apt-utils && \
-    rm -rf /var/lib/apt/lists/*
+# Update'''  
 
 
+def __part2():
+    return '''
 # Install useful tools and install important libaries
 RUN apt-get -y update && \
     apt-get -y --no-install-recommends install nano wget \

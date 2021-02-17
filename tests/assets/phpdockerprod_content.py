@@ -4,10 +4,10 @@ def getContent():
 ARG DEBIAN_FRONTEND=noninteractive
 
 # Update
-RUN apt-get -y update --fix-missing && \
-    apt-get upgrade -y && \
-    apt-get --no-install-recommends install -y apt-utils && \
-    rm -rf /var/lib/apt/lists/*
+RUN apt-get -y update --fix-missing
+RUN apt-get upgrade -y
+RUN apt-get --no-install-recommends install -y apt-utils
+RUN rm -rf /var/lib/apt/lists/*
 
 # Install useful tools and install important libaries
 RUN apt-get -y update && \
